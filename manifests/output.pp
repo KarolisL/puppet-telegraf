@@ -28,10 +28,8 @@ define telegraf::output (
   }
 
   Class['::telegraf::config']
-  ->
-  file { "${telegraf::config_folder}/output-${name}.conf":
+  -> file { "${telegraf::config_folder}/output-${name}.conf":
     content => template('telegraf/output.conf.erb'),
   }
-  ~>
-  Class['::telegraf::service']
+  ~> Class['::telegraf::service']
 }
